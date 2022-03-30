@@ -3,7 +3,7 @@
 // PACKAGES INSTALL THEM 
 
 const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }); // lol mobile status remove this if u want
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }); // removed mobile stauts cs my console was going brrrrrrrrrr
 const { MessageEmbed } = require('discord.js');
 const express = require('express');
 const app = express();
