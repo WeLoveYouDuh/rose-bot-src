@@ -2,8 +2,8 @@
 
 // PACKAGES INSTALL THEM 
 
-const Discord = require('discord.js');
-const client = new Discord.Client({ws: {properties: {$browser: "Discord Android"}}}) // lol mobile status remove this if u want
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }); // lol mobile status remove this if u want
 const { MessageEmbed } = require('discord.js');
 const express = require('express');
 const app = express();
@@ -13,12 +13,11 @@ require('discord-inline-reply');
 
 // Vars for speds like mxrsik LMAO
 
-const guildID = 'UR GUILD ID'
+const guildID = '958833042707869736'
 const statusActivty = 'ACTIVY MESSAGE'
-const welcomeChannel = 'WELCOME CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
-const leaveChannel = 'Leave CHANNEL' // dont fucking put in the id, i made it easier for dumbasses
-const boostChannel = 'BOOST CHANNEL' // dont fucking put in the id, i made it easier for dumbasses
-const statusRole = 'STATUS ROLE ID'
+const welcomeChannel = '958833042707869736' // dont fucking put in the id, i made it easier for dumbasses
+const leaveChannel = '958833042707869736' // dont fucking put in the id, i made it easier for dumbasses
+const boostChannel = '958833042707869736' // dont fucking put in the id, i made it easier for dumbasses
 
 // STARTUP
 
@@ -29,9 +28,13 @@ let server = app.listen(6000, function(){
 
 client.on("ready", async () => {
   console.log(`Bot is has been deployed 🚀`)
-  client.user
-    .setActivity(statusActivty, { type: "WATCHING" }) //status code
-    .catch(error => console.log(error))
+  client.user.setPresence({
+    game: {
+        name: statusActivty,
+        type: "Playing",
+        url: "https://github.com/weloveyouduh/"
+    }
+});
 })
 
 // WELCOME
@@ -83,29 +86,6 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
             .send(`${newMember.user.tag} has unboosted the server!`);
     }
 });
-
-
-// PRESCENCE
-
-client.on('presenceUpdate', async (oldPresence, newPresence) => {
-  const role = newPresence.guild.roles.cache.get(statusRole);
-  const member = newPresence.member
-  const activities = member.user.presence.activities[0];
-
-  if (activities &&  activities.state && (activities.state.includes( "test" ) || activities.state.includes(".gg/changethislol" ))) {
-      return newPresence.member.roles.add(role)
-      .catch(err => {
-      console.log(err)
-      return;
-      })
-
-    }
-  else {
-    if(member.roles.cache.get(role.id)) {
-      newPresence.member.roles.remove(role)
-    }
-  }
-})
 
 // PING CMD ( doesn't really work and outputs sum dumbass letters )
 
@@ -172,7 +152,7 @@ client.on('message', message => {
 
 // LOGIN
 
-client.login(process.env.TOKEN)
+client.login('OTU4ODMyNzQyNjg1MTA2Mjg3.YkTElA.y7dSkWc6CvE866DbJwzgl4KJfkE')
 
 // ANTI CRASH
 
@@ -206,4 +186,3 @@ process.on('unhandledRejection', (reason, p) => {
     console.log(type, promise, reason.yellow.dim);
     console.log('=== multiple Resolves ===\n\n\n\n\n'.toUpperCase().red.dim);
   });
-
