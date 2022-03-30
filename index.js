@@ -13,11 +13,11 @@ require('discord-inline-reply');
 
 // Vars for speds like mxrsik LMAO
 
-const guildID = '958833042707869736'
+const guildID = 'GUILD ID'
 const statusActivty = 'ACTIVY MESSAGE'
-const welcomeChannel = '958833042707869736' // dont fucking put in the id, i made it easier for dumbasses
-const leaveChannel = '958833042707869736' // dont fucking put in the id, i made it easier for dumbasses
-const boostChannel = '958833042707869736' // dont fucking put in the id, i made it easier for dumbasses
+const welcomeChannel = 'CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
+const leaveChannel = 'CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
+const boostChannel = 'CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
 
 // STARTUP
 
