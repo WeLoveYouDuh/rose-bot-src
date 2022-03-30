@@ -3,21 +3,22 @@
 // PACKAGES INSTALL THEM 
 
 const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }); // removed mobile stauts cs my console was going brrrrrrrrrr
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }, {ws: {properties: {$browser: "Discord Android"}}}); ; // lol mobile status remove this if u want
+require('discord-reply');
 const { MessageEmbed } = require('discord.js');
 const express = require('express');
 const app = express();
 const router = express.Router();
 const db = require('quick.db');
-require('discord-inline-reply');
+
 
 // Vars for speds like mxrsik LMAO
 
 const guildID = 'GUILD ID'
 const statusActivty = 'ACTIVY MESSAGE'
-const welcomeChannel = 'CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
-const leaveChannel = 'CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
-const boostChannel = 'CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
+const welcomeChannel = 'WELCOME CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
+const leaveChannel = 'LEAVE CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
+const boostChannel = 'BOOST CHANNEL NAME' // dont fucking put in the id, i made it easier for dumbasses
 
 // STARTUP
 
@@ -31,7 +32,7 @@ client.on("ready", async () => {
   client.user.setPresence({
     game: {
         name: statusActivty,
-        type: "Playing",
+        type: "Streaming",
         url: "https://github.com/weloveyouduh/"
     }
 });
@@ -103,7 +104,7 @@ client.on('message', message => {
 client.on('message', message => {
   const prettyMilliseconds = require("pretty-ms");
   if (message.content === ';uptime') {
-    message.lineReply(`${prettyMilliseconds(client.uptime)}`)
+    message.reply(`${prettyMilliseconds(client.uptime)}`)
   }
 });
 
@@ -111,8 +112,8 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === ';nuke') {
-  if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.lineReply('No Permission.'); 
-  if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) return message.lineReply('No Bot Permission.'); //Line (Inline) Reply with mention
+  if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply('No Permission.'); 
+  if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) return message.reply('No Bot Permission.'); //Line (Inline) Reply with mention
   
   message.channel.clone().then(channel => channel.send('Channel Nuked'));
   message.channel.delete();
@@ -124,7 +125,7 @@ client.on('message', message => {
   if (message.content === ';mc') {
     const guild = client.guilds.cache.get(guildID);
     const memberCount = guild.memberCount;
-    message.lineReply(`${memberCount.toLocaleString()}`); 
+    message.reply(`${memberCount.toLocaleString()}`); 
 }})
 
 // SNIPE
