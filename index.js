@@ -152,7 +152,7 @@ client.on('message', message => {
 
 // LOGIN
 
-client.login('OTU4ODMyNzQyNjg1MTA2Mjg3.YkTElA.y7dSkWc6CvE866DbJwzgl4KJfkE')
+client.login(process.env.TOKEN)
 
 // ANTI CRASH
 
