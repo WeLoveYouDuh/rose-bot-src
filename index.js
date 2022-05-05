@@ -43,7 +43,7 @@ const exampleEmbed = new MessageEmbed()
   .setThumbnail(member.user.displayAvatarURL(({dynamic : true})))
   .setTitle(`Wlc`)
   .setDescription(`> <#951182989180665856>\n`)
-  .setFooter(`${memberCount.toLocaleString()} 〡 /termed`)
+  .setFooter(`${memberCount.toLocaleString()}`)
   
   member.guild.channels.cache.find(i => i.name === '・txt').send(`<@${member.id}>`, exampleEmbed).then(msg => setTimeout(() => msg.delete(), 300000));
 })
