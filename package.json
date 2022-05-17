@@ -1,7 +1,7 @@
 {
-  "name": "Discord Rose Bot",
+  "name": "Discord-Rose-Bot",
   "version": "1.0.0",
-  "description": "Rose Bot",
+  "description": "Rose-Bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
